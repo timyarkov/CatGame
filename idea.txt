@@ -6,3 +6,5 @@
 	- Have update rates for these, so that some arent completely broken
 	- have one that just follows player's x and y pos
 	- have one that follows few units ahead, updates every second or so
+
+- on menu screen can have little facts for funsies :D
