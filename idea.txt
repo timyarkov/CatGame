@@ -1,0 +1,8 @@
+- play as a laser pointer, try not to get caught by the cats
+	- limited speed for laser pointer of course, for fairness
+- start with one cat, gradually more cats and faster ones too
+	- Limit cat speed at some point though :)
+- cats can have different behaviour, kind of like the ghosts from waka did!
+	- Have update rates for these, so that some arent completely broken
+	- have one that just follows player's x and y pos
+	- have one that follows few units ahead, updates every second or so
