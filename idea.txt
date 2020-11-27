@@ -4,7 +4,9 @@
 	- Limit cat speed at some point though :)
 - cats can have different behaviour, kind of like the ghosts from waka did!
 	- Have update rates for these, so that some arent completely broken
-	- have one that just follows player's x and y pos
-	- have one that follows few units ahead, updates every second or so
+	- have one that just follows player's x and y pos ("Runny")
+	- have one that follows few units ahead, updates every second or so ("Jumpy")
+- have some different powerups
+	- treat that makes a cat make its way off screen
 
 - on menu screen can have little facts for funsies :D

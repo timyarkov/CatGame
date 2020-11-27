@@ -1,9 +1,13 @@
 package main;
 
+import processing.core.PApplet;
 import processing.core.PImage;
 
 /**
- * Class for all GameObjs.
+ * Class for all GameObjs. Assuming box-shaped objects, 
+ * X and Y positions are taken as the top-left of the object.
+ * Note that if the sprite array is to be used, it needs 
+ * to be instantiated with the setSpriteArray() method.
  */
 public abstract class GameObj {
     protected int posX;
@@ -11,11 +15,16 @@ public abstract class GameObj {
     protected int width;
     protected int height;
     protected PImage sprite;
+    protected PImage[] spriteArray;
 
     /**
      * Constructor for GameObjs. Bad widths and heights (negative) are converted to zero,
      * and bad sprites (null) are converted to empty PImages.
-     * i need to do the documentation on a machine that has java support working :(
+     * @param posX X Position of the object.
+     * @param posY Y Position of the object.
+     * @param width Width of the object.
+     * @param height Height of the object.
+     * @param sprite Sprite of the object.
      */
     public GameObj(int posX, int posY, int width, int height, PImage sprite) {
         this.posX = posX;
@@ -61,6 +70,10 @@ public abstract class GameObj {
         return this.sprite;
     }
 
+    public PImage[] getSpriteArray() {
+        return this.spriteArray;
+    }
+
     // Setter Methods
     public void setPos(int posX, int posY) {
         this.posX = posX;
@@ -88,6 +101,17 @@ public abstract class GameObj {
         return true;
     }
 
+    public void setSpriteArray(PImage[] sprites) {
+        // Check that theres no nulls; if there are, just make them into empty PImages
+        for (int i = 0; i < sprites.length; i++) {
+            if (sprites[i] == null) {
+                sprites[i] = new PImage();
+            }
+        }
+
+        this.spriteArray = sprites;
+    }
+
     // Other
     public boolean isCollision(int objPosX, int objPosY, int objWidth, int objHeight) {
         if (objWidth < 0 || objHeight < 0) {
@@ -111,5 +135,9 @@ public abstract class GameObj {
                     this.getWidth() == obj.getWidth() &&
                     this.getHeight() == obj.getHeight() &&
                     this.getSprite().equals(obj.getSprite()));
+    }
+
+    public void draw(PApplet app) {
+        app.image(this.sprite, this.posX, this.posY);
     }
 }
