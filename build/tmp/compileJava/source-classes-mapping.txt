@@ -1,4 +1,0 @@
-GameObj.java
- main.GameObj
-gameobj/Animated.java
- Animated
