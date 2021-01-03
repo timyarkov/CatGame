@@ -10,8 +10,8 @@ import processing.core.PImage;
  * to be instantiated with the setSpriteArray() method.
  */
 public abstract class GameObj {
-    protected int posX;
-    protected int posY;
+    protected double posX;
+    protected double posY;
     protected int width;
     protected int height;
     protected PImage sprite;
@@ -26,7 +26,7 @@ public abstract class GameObj {
      * @param height Height of the object.
      * @param sprite Sprite of the object.
      */
-    public GameObj(int posX, int posY, int width, int height, PImage sprite) {
+    public GameObj(double posX, double posY, int width, int height, PImage sprite) {
         this.posX = posX;
         this.posY = posY;
         
@@ -50,11 +50,11 @@ public abstract class GameObj {
     }
 
     // Getter Methods
-    public int getPosX() {
+    public double getPosX() {
         return this.posX;
     }
 
-    public int getPosY() {
+    public double getPosY() {
         return this.posY;
     }
 
@@ -75,7 +75,7 @@ public abstract class GameObj {
     }
 
     // Setter Methods
-    public void setPos(int posX, int posY) {
+    public void setPos(double posX, double posY) {
         this.posX = posX;
         this.posY = posY;
     }
@@ -113,7 +113,7 @@ public abstract class GameObj {
     }
 
     // Other
-    public boolean isCollision(int objPosX, int objPosY, int objWidth, int objHeight) {
+    public boolean isCollision(double objPosX, double objPosY, int objWidth, int objHeight) {
         if (objWidth < 0 || objHeight < 0) {
             return false;
         }
@@ -129,7 +129,7 @@ public abstract class GameObj {
                     this.posY + this.height > objPosY);
     }
 
-    public boolean equals(GameObj obj) {
+    public boolean equals(GameObj obj) { //!!! need to check if with doubles this still works
         return (this.getPosX() == obj.getPosX() &&
                     this.getPosY() == obj.getPosY() &&
                     this.getWidth() == obj.getWidth() &&

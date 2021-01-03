@@ -10,7 +10,7 @@ public abstract class StaticObj extends GameObj {
     /**
      * Constructor for a static object; utilises GameObj's constructor.
      */
-    public StaticObj(int posX, int posY, int width, int height, PImage sprite) {
+    public StaticObj(double posX, double posY, int width, int height, PImage sprite) {
         super(posX, posY, width, height, sprite);
     }
 }

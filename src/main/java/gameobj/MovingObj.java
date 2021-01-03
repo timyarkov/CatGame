@@ -1,6 +1,7 @@
 package main.java.gameobj;
 
 import main.java.GameObj;
+import main.java.MathVector;
 import main.java.Tickable;
 import java.util.List;
 import java.util.ArrayList;
@@ -11,18 +12,24 @@ import processing.core.PImage;
 //!!! need to do javadocs
 
 public abstract class MovingObj extends GameObj implements Tickable {
-    protected int speed;
-    protected int speedMax;
+    protected double speed; //!!! need to consider, since double is floating point and inaccurate
+    protected double speedMax;
+    protected final double accelerateMultiplier = 0.2; //!!! to tweak
 
     protected boolean upAvailable;
     protected boolean downAvailable;
     protected boolean leftAvailable;
     protected boolean rightAvailable;
-    
-    protected int pointingX;
-    protected int pointingY;
 
-    public MovingObj(int posX, int posY, int w, int h, int speedMax, PImage spr) {
+    protected MathVector moveVector; // For movement
+    
+    protected double diffX;
+    protected double diffY;
+
+    protected double pointingX;
+    protected double pointingY;
+
+    public MovingObj(double posX, double posY, int w, int h, double speedMax, PImage spr) {
         super(posX, posY, w, h, spr);
 
         this.speed = 0;
@@ -33,29 +40,31 @@ public abstract class MovingObj extends GameObj implements Tickable {
         this.leftAvailable = true;
         this.rightAvailable = true;
 
+        this.moveVector = new MathVector(0, 0);
+
         this.pointingX = 0;
         this.pointingY = 0;
     }
 
     // Getter Methods
-    public int getSpeed() {
+    public double getSpeed() {
         return this.speed;
     }
 
-    public int getSpeedMax() {
+    public double getSpeedMax() {
         return this.speedMax;
     }
 
-    public int getPointingX() {
+    public double getPointingX() {
         return this.pointingX;
     }
 
-    public int getPointingY() {
+    public double getPointingY() {
         return this.pointingY;
     }
 
     // Setter methods
-    public boolean setSpeedMax(int speedMax) {
+    public boolean setSpeedMax(double speedMax) {
         if (speedMax < 0) {
             return false;
         }
@@ -65,7 +74,7 @@ public abstract class MovingObj extends GameObj implements Tickable {
         return true;
     }
 
-    public void setPointing(int pointingX, int pointingY) {
+    public void setPointing(double pointingX, double pointingY) {
         this.pointingX = pointingX;
         this.pointingY = pointingY;
     }
@@ -73,19 +82,20 @@ public abstract class MovingObj extends GameObj implements Tickable {
 
     // Movement
     public void accelerate() {
-        if ((this.speed + 1) <= speedMax) {
+        if ((this.speed + this.accelerateMultiplier) <= speedMax) {
             this.speed++;
         }
     }
 
     public void decelerate() {
-        if ((this.speed - 1) >= 0) {
+        if ((this.speed - this.accelerateMultiplier) >= 0) {
             this.speed--;
         }
     }
 
     //!!! double check for this one! might run into a case of clipping into walls when going kinda parallel to them
-    public void moveToPoint() {
+    @Deprecated
+    public void moveToPointOld() {
         // Have buffer of one pixel or so each direction to avoid jittering back and forth
 
         // X Movements
@@ -100,6 +110,30 @@ public abstract class MovingObj extends GameObj implements Tickable {
             this.posY -= this.speed; // Up
         } else if (this.posY - this.pointingY < 1 && this.downAvailable) {
             this.posY -= this.speed; // Down
+        }
+    }
+
+    //!!! trying vectors with this one
+    public void moveToPoint() {
+        // Determine components (!!! double check directions on this one!)
+        this.diffX = this.pointingX - this.posX;
+        this.diffY = this.pointingY - this.posY;
+
+        this.moveVector.setComponents(this.diffX, this.diffY);
+
+        // Act upon it
+        // X axis moves
+        if (diffX < 0 && this.leftAvailable) {
+            this.posX -= this.moveVector.getUnitXComponent(); // Left
+        } else if (diffX > 0 && this.rightAvailable) {
+            this.posX += this.moveVector.getUnitXComponent(); // Right
+        }
+
+        // Y axis moves
+        if (diffY < 0 && this.upAvailable) {
+            this.posY -= this.moveVector.getUnitYComponent(); // Up
+        } else if (diffY > 0 && this.downAvailable) {
+            this.posY += this.moveVector.getUnitYComponent(); // Down
         }
     }
 

@@ -62,7 +62,7 @@ public class Game {
     }
 
     public int getDeviceHeight() {
-        return this.deviceHeight
+        return this.deviceHeight;
     }
 
     public Map<String, PImage> getSprites() {

@@ -8,7 +8,7 @@ public abstract class Collectable extends StaticObj {
     /**
      * Constructor for a collectable; utilises StaticObj's constructor.
      */
-    public Wall(int posX, int posY, int width, int height, PImage sprite) {
+    public Collectable(double posX, double posY, int width, int height, PImage sprite) {
         super(posX, posY, width, height, sprite);
 
         this.collected = false;
