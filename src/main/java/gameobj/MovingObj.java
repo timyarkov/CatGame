@@ -83,13 +83,13 @@ public abstract class MovingObj extends GameObj implements Tickable {
     // Movement
     public void accelerate() {
         if ((this.speed + this.accelerateMultiplier) <= speedMax) {
-            this.speed++;
+            this.speed += this.accelerateMultiplier;
         }
     }
 
     public void decelerate() {
         if ((this.speed - this.accelerateMultiplier) >= 0) {
-            this.speed--;
+            this.speed -= this.accelerateMultiplier;
         }
     }
 
@@ -124,16 +124,16 @@ public abstract class MovingObj extends GameObj implements Tickable {
         // Act upon it
         // X axis moves
         if (diffX < 0 && this.leftAvailable) {
-            this.posX -= this.moveVector.getUnitXComponent(); // Left
+            this.posX -= this.moveVector.getUnitXComponent() * this.speed; // Left
         } else if (diffX > 0 && this.rightAvailable) {
-            this.posX += this.moveVector.getUnitXComponent(); // Right
+            this.posX += this.moveVector.getUnitXComponent() * this.speed; // Right
         }
 
         // Y axis moves
         if (diffY < 0 && this.upAvailable) {
-            this.posY -= this.moveVector.getUnitYComponent(); // Up
+            this.posY -= this.moveVector.getUnitYComponent() * this.speed; // Up
         } else if (diffY > 0 && this.downAvailable) {
-            this.posY += this.moveVector.getUnitYComponent(); // Down
+            this.posY += this.moveVector.getUnitYComponent() * this.speed; // Down
         }
     }
 
