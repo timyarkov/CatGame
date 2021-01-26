@@ -33,7 +33,7 @@ public abstract class MovingObj extends GameObj implements Tickable {
         super(posX, posY, w, h, spr);
 
         this.speed = 0;
-        this.speedMax = speedMax;
+        this.speedMax = speedMax; // !!!might need conversion for different resolutions?
 
         this.upAvailable = true;
         this.downAvailable = true;
