@@ -1,5 +1,6 @@
 package main.java.gameobj;
 
+import main.java.Game;
 import main.java.GameObj;
 import main.java.MathVector;
 import main.java.Tickable;
@@ -138,7 +139,7 @@ public abstract class MovingObj extends GameObj implements Tickable {
     }
 
     // Other
-    public abstract void behaviour();
+    public void behaviour() {}; //!!! need to make interface for this instead
 
     public void tick(Game gameInst) {
         //!!! checks surroundings, if can move (no collisions), will move, otherwise dont move,

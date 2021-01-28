@@ -1,4 +1,4 @@
-package main;
+package main.java;
 
 import processing.core.PApplet;
 import processing.core.PImage;
@@ -138,6 +138,7 @@ public abstract class GameObj {
     }
 
     public void draw(PApplet app) {
-        app.image(this.sprite, this.posX, this.posY);
+        //!!! need to refactor everything to use floats now :(
+        app.image(this.sprite, (float) this.posX, (float) this.posY);
     }
 }

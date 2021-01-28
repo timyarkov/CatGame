@@ -1,6 +1,7 @@
 package main.java.gameobj.staticobj;
 
 import main.java.gameobj.StaticObj;
+import processing.core.PImage;
 
 public abstract class Collectable extends StaticObj {
     protected boolean collected;
