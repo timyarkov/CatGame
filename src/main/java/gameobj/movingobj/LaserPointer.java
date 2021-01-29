@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class LaserPointer extends MovingObj {
-    public LaserPointer(double posX, double posY, int w, int h, double speedMax, PImage spr) {
+    public LaserPointer(float posX, float posY, float w, float h, float speedMax, PImage spr) {
         super(posX, posY, w, h, speedMax, spr);
     }
 
@@ -13,7 +13,7 @@ public class LaserPointer extends MovingObj {
     @Override // No art, so just draw squares for now
     public void draw(PApplet app) {
         app.fill(0, 255, 0);
-        app.rect((float) this.getPosX(), (float) this.getPosY(), 
+        app.rect(this.getPosX(), this.getPosY(), 
                     this.getWidth(), this.getHeight());
     }
 }

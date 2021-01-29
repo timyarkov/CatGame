@@ -19,7 +19,7 @@ public class MathVector {
      * @param xComponent
      * @param yComponent
      */
-    public MathVector(double xComponent, double yComponent) {
+    public MathVector(float xComponent, double yComponent) {
         this.xComponent = xComponent;
         this.yComponent = yComponent;
     }

@@ -10,10 +10,10 @@ import processing.core.PImage;
  * to be instantiated with the setSpriteArray() method.
  */
 public abstract class GameObj {
-    protected double posX;
-    protected double posY;
-    protected int width;
-    protected int height;
+    protected float posX;
+    protected float posY;
+    protected float width;
+    protected float height;
     protected PImage sprite;
     protected PImage[] spriteArray;
 
@@ -26,7 +26,7 @@ public abstract class GameObj {
      * @param height Height of the object.
      * @param sprite Sprite of the object.
      */
-    public GameObj(double posX, double posY, int width, int height, PImage sprite) {
+    public GameObj(float posX, float posY, float width, float height, PImage sprite) {
         this.posX = posX;
         this.posY = posY;
         
@@ -50,19 +50,19 @@ public abstract class GameObj {
     }
 
     // Getter Methods
-    public double getPosX() {
+    public float getPosX() {
         return this.posX;
     }
 
-    public double getPosY() {
+    public float getPosY() {
         return this.posY;
     }
 
-    public int getWidth() {
+    public float getWidth() {
         return this.width;
     }
 
-    public int getHeight() {
+    public float getHeight() {
         return this.height;
     }
 
@@ -75,12 +75,12 @@ public abstract class GameObj {
     }
 
     // Setter Methods
-    public void setPos(double posX, double posY) {
+    public void setPos(float posX, float posY) {
         this.posX = posX;
         this.posY = posY;
     }
 
-    public boolean setSize(int width, int height) {
+    public boolean setSize(float width, float height) {
         if (width < 0 || height < 0) {
             return false;
         }
@@ -113,7 +113,7 @@ public abstract class GameObj {
     }
 
     // Other
-    public boolean isCollision(double objPosX, double objPosY, int objWidth, int objHeight) {
+    public boolean isCollision(float objPosX, float objPosY, float objWidth, float objHeight) {
         if (objWidth < 0 || objHeight < 0) {
             return false;
         }
@@ -129,7 +129,7 @@ public abstract class GameObj {
                     this.posY + this.height > objPosY);
     }
 
-    public boolean equals(GameObj obj) { //!!! need to check if with doubles this still works
+    public boolean equals(GameObj obj) { //!!! need to check if with floats this still works
         return (this.getPosX() == obj.getPosX() &&
                     this.getPosY() == obj.getPosY() &&
                     this.getWidth() == obj.getWidth() &&
@@ -138,7 +138,6 @@ public abstract class GameObj {
     }
 
     public void draw(PApplet app) {
-        //!!! need to refactor everything to use floats now :(
-        app.image(this.sprite, (float) this.posX, (float) this.posY);
+        app.image(this.sprite, this.posX, this.posY);
     }
 }

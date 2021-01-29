@@ -9,7 +9,7 @@ public class Wall extends StaticObj {
     /**
      * Constructor for a wall; utilises StaticObj's constructor.
      */
-    public Wall(double posX, double posY, int width, int height, PImage sprite) {
+    public Wall(float posX, float posY, float width, float height, PImage sprite) {
         super(posX, posY, width, height, sprite);
     }
 }

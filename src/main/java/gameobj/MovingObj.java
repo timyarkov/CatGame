@@ -13,9 +13,9 @@ import processing.core.PImage;
 //!!! need to do javadocs
 
 public abstract class MovingObj extends GameObj implements Tickable {
-    protected double speed; //!!! need to consider, since double is floating point and inaccurate
-    protected double speedMax;
-    protected final double accelerateMultiplier = 0.2; //!!! to tweak
+    protected float speed; //!!! need to consider, since float is floating point and inaccurate
+    protected float speedMax;
+    protected final float accelerateMultiplier = 0.2f; //!!! to tweak
 
     protected boolean upAvailable;
     protected boolean downAvailable;
@@ -24,13 +24,13 @@ public abstract class MovingObj extends GameObj implements Tickable {
 
     protected MathVector moveVector; // For movement
     
-    protected double diffX;
-    protected double diffY;
+    protected float diffX;
+    protected float diffY;
 
-    protected double pointingX;
-    protected double pointingY;
+    protected float pointingX;
+    protected float pointingY;
 
-    public MovingObj(double posX, double posY, int w, int h, double speedMax, PImage spr) {
+    public MovingObj(float posX, float posY, float w, float h, float speedMax, PImage spr) {
         super(posX, posY, w, h, spr);
 
         this.speed = 0;
@@ -48,24 +48,24 @@ public abstract class MovingObj extends GameObj implements Tickable {
     }
 
     // Getter Methods
-    public double getSpeed() {
+    public float getSpeed() {
         return this.speed;
     }
 
-    public double getSpeedMax() {
+    public float getSpeedMax() {
         return this.speedMax;
     }
 
-    public double getPointingX() {
+    public float getPointingX() {
         return this.pointingX;
     }
 
-    public double getPointingY() {
+    public float getPointingY() {
         return this.pointingY;
     }
 
     // Setter methods
-    public boolean setSpeedMax(double speedMax) {
+    public boolean setSpeedMax(float speedMax) {
         if (speedMax < 0) {
             return false;
         }
@@ -75,7 +75,7 @@ public abstract class MovingObj extends GameObj implements Tickable {
         return true;
     }
 
-    public void setPointing(double pointingX, double pointingY) {
+    public void setPointing(float pointingX, float pointingY) {
         this.pointingX = pointingX;
         this.pointingY = pointingY;
     }
