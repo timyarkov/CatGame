@@ -6,6 +6,7 @@
 	- Have update rates for these, so that some arent completely broken
 	- have one that just follows player's x and y pos ("Runny")
 	- have one that follows few units ahead, updates every second or so ("Jumpy")
+	- have one that periodically goes to random positions ("Stumbly")
 	- in future?
 		- one that slows down to charge a quick dash in one direction ("Dashy") (have little arrow that points out from it to show direction it is going to dash, or maybe make design more pointy?)
 - have some different powerups

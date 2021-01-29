@@ -2,6 +2,7 @@ package main.java.gameobj;
 
 import main.java.Game;
 import main.java.GameObj;
+import main.java.gameobj.staticobj.Wall;
 import main.java.MathVector;
 import main.java.Tickable;
 import java.util.List;
@@ -62,6 +63,10 @@ public abstract class MovingObj extends GameObj implements Tickable {
 
     public float getPointingY() {
         return this.pointingY;
+    }
+
+    public MathVector getVector() {
+        return this.moveVector;
     }
 
     // Setter methods
@@ -138,9 +143,6 @@ public abstract class MovingObj extends GameObj implements Tickable {
         }
     }
 
-    // Other
-    public void behaviour() {}; //!!! need to make interface for this instead
-
     public void tick(Game gameInst) {
         //!!! checks surroundings, if can move (no collisions), will move, otherwise dont move,
         //      also need to figure out the accelerate and decelerate
@@ -185,5 +187,8 @@ public abstract class MovingObj extends GameObj implements Tickable {
                 this.rightAvailable = true;
             }
         }
+
+        // After collision checks, perform movements
+        this.moveToPoint();
     }
 }

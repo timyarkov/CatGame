@@ -10,10 +10,9 @@ public class LaserPointer extends MovingObj {
     }
 
     // Other Methods
-    @Override // No art, so just draw squares for now
+    @Override // No art, so just draw green squares for now
     public void draw(PApplet app) {
         app.fill(0, 255, 0);
-        app.rect(this.getPosX(), this.getPosY(), 
-                    this.getWidth(), this.getHeight());
+        app.rect(this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight());
     }
 }
