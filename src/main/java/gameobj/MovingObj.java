@@ -16,7 +16,7 @@ import processing.core.PImage;
 public abstract class MovingObj extends GameObj implements Tickable {
     protected float speed; //!!! need to consider, since float is floating point and inaccurate
     protected float speedMax;
-    protected final float accelerateMultiplier = 0.2f; //!!! to tweak
+    protected static final float accelerateMultiplier = 0.2f; //!!! to tweak
 
     protected boolean upAvailable;
     protected boolean downAvailable;
@@ -88,14 +88,14 @@ public abstract class MovingObj extends GameObj implements Tickable {
 
     // Movement
     public void accelerate() {
-        if ((this.speed + this.accelerateMultiplier) <= speedMax) {
-            this.speed += this.accelerateMultiplier;
+        if ((this.speed + MovingObj.accelerateMultiplier) <= speedMax) {
+            this.speed += MovingObj.accelerateMultiplier;
         }
     }
 
     public void decelerate() {
-        if ((this.speed - this.accelerateMultiplier) >= 0) {
-            this.speed -= this.accelerateMultiplier;
+        if ((this.speed - MovingObj.accelerateMultiplier) >= 0) {
+            this.speed -= MovingObj.accelerateMultiplier;
         }
     }
 
