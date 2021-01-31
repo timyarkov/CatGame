@@ -1,7 +1,12 @@
 CATNIPPED! Design notes
 
 Premise - 
-The player controls a laser pointer running away from cats trying to catch it. The laser pointer is controlled by the player by pressing and holding the point they want it to go towards, and the game is lost if the laser pointer makes contact with a cat. The game starts with one slow cat on the screen, and then as the game progresses, more and faster cats begin to enter and populate the screen. Ultimately the goal is to survive for as long as possible.
+The player controls a laser pointer running away from cats trying to catch it. 
+The laser pointer is controlled by the player by pressing and holding the point 
+they want it to go towards, and the game is lost if the laser pointer makes 
+contact with a cat. The game starts with one slow cat on the screen, and then as 
+the game progresses, more and faster cats begin to enter and populate the screen. 
+Ultimately the goal is to survive for as long as possible.
 
 Cat types -
 Cats can have different types, each having their own behaviour.
