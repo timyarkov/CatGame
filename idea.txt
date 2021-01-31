@@ -1,19 +1,26 @@
-- play as a laser pointer, try not to get caught by the cats
-	- limited speed for laser pointer of course, for fairness
-- start with one cat, gradually more cats and faster ones too
-	- Limit cat speed at some point though :)
-- cats can have different behaviour, kind of like the ghosts from waka did!
-	- Have update rates for these, so that some arent completely broken
-	- have one that just follows player's x and y pos ("Runny")
-	- have one that follows few units ahead, updates every second or so ("Jumpy")
-	- have one that periodically goes to random positions ("Stumbly")
-	- in future?
-		- one that slows down to charge a quick dash in one direction ("Dashy") (have little arrow that points out from it to show direction it is going to dash, or maybe make design more pointy?)
-- have some different powerups
-	- treat that makes a cat make its way off screen
-- on menu screen can have little facts for funsies :D
-
 CATNIPPED! Design notes
 
 Premise - 
-The player controls a laser pointer running away from varying cats
+The player controls a laser pointer running away from cats trying to catch it. The laser pointer is controlled by the player by pressing and holding the point they want it to go towards, and the game is lost if the laser pointer makes contact with a cat. The game starts with one slow cat on the screen, and then as the game progresses, more and faster cats begin to enter and populate the screen. Ultimately the goal is to survive for as long as possible.
+
+Cat types -
+Cats can have different types, each having their own behaviour.
+	Implemented -
+	- Runny: Directly follows player's X and Y Position.
+	- Jumpy: Every 2 seconds, updates the position it moves towards to be slightly ahead of
+		the direction the player is going.
+	- Stumbly: Every 5 seconds, heads towards a new random position.
+	
+	Possible ideas to implement - 
+	- Dashy: Periodically slows down to charge up a dash (direction of which is shown with an
+		arrow to allow player to prepare).
+		- Misc note: possibly design as pointy shape to take place of arrow?
+
+Collectables -
+To be implemented, the player will be able to collect items to assist them to survive.
+	Ideas - 
+	- Treat: Makes one cat leave the board
+
+Misc Notes -
+- Player should have a max move speed, to avoid possible abuse (still making movement fast though, and not too sluggish).
+- Would be cool to have some cool facts display on the main menu :)

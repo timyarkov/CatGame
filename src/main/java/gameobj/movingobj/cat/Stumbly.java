@@ -35,7 +35,7 @@ public class Stumbly extends Cat {
             this.randomX = this.randomiser.nextFloat() * this.randomiserMult;
             this.randomY = this.randomiser.nextFloat() * this.randomiserMult;
 
-            // Randomise polarity on X and Y
+            // Randomise polarity on X and Y !!! do actually need this????
             if (Math.pow(-1, randomiser.nextInt(2)) < 0) { // Negative case
                 this.randomX *= -1;
             }
