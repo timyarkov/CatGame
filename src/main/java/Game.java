@@ -36,8 +36,8 @@ public class Game {
     private Map<String, PImage> sprites; // Sprites to use in the game
 
     // Game board components; set up at initial setup
-    private List<StaticObj> board; //!!!dont need probably?
-    private List<Wall> walls; //!!!dont need probably?
+    private List<StaticObj> board; //!!!deprecated
+    private List<Wall> walls;
     private PlayerSpawn playerSpawn;
     private List<CatSpawn> catSpawns;
     
@@ -117,15 +117,12 @@ public class Game {
         return this.deviceHeight;
     }
 
-    public List<GameObj> getGameObjs() {
-        return this.gameObjs;
-    }
-
     public Map<String, PImage> getSprites() {
         return this.sprites;
     }
 
-    // Getter methods: Board Attributes
+    // Getter methods: Game Board Components
+    @Deprecated
     public List<StaticObj> getBoard() {
         return this.board;
     }
@@ -142,7 +139,11 @@ public class Game {
         return this.catSpawns;
     }
 
-    // Getter methods: Gameplay objects
+    // Getter methods: Gameplay components
+    public List<GameObj> getGameObjs() {
+        return this.gameObjs;
+    }
+
     public List<MovingObj> getEntities() {
         return this.entities;
     }
@@ -159,8 +160,8 @@ public class Game {
     public void tick() {
         // Run tick methods for each possible state
         if (this.getState() == GameStates.InGame) {
-            // Run all tickables
-            for (Tickable obj : this.getGameObjs()) { //!!!need to edit this
+            // Run all tickables (entities for now)
+            for (Tickable obj : this.getEntities()) {
                 obj.tick(this);
             }
         }
